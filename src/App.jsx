@@ -6,7 +6,7 @@ import { TodoList } from './components/TodoList';
 import { NavBar } from './components/NavBar';
 
 function App() {
-  const [state, setState] = useState([
+  const [todoItems, setTodoItems] = useState([
     {
       id: 1,
       title: 'Setup development environment',
@@ -24,11 +24,20 @@ function App() {
     },
   ]);
 
+  console.log(todoItems);
+
+  const toggle = (id) => {
+    setTodoItems((prevTodoItems) => {
+      return prevTodoItems.map((todo) => {
+        return todo.id === id ? { ...todo, completed: !todo.completed } : todo;
+      });
+    });
+  };
   return (
     <div className='App'>
       <Header />
       <InputTodo />
-      <TodoList />
+      <TodoList items={todoItems} toggle={toggle} />
     </div>
   );
 }
