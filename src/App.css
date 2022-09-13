@@ -43,3 +43,9 @@ li {
 .todo-text.completed {
   text-decoration: line-through;
 }
+
+.edit-input {
+  width: 82%;
+  padding: 4px;
+  font-size: 18px;
+}

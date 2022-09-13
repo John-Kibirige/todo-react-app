@@ -2,7 +2,7 @@ import React from 'react';
 import { TodoItem } from './TodoItem';
 
 export const TodoList = (props) => {
-  const { items, toggle, deleteItem } = props;
+  const { items, toggle, deleteItem, editItem } = props;
   const todoElements = items.map((item) => (
     <TodoItem
       key={item.id}
@@ -14,6 +14,8 @@ export const TodoList = (props) => {
       deleteItem={() => {
         deleteItem(item.id);
       }}
+      editItem={editItem}
+      id={item.id}
     />
   ));
   return <ul>{todoElements}</ul>;

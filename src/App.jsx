@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import { Header } from './components/Header';
 import { InputTodo } from './components/InputTodo';
@@ -7,23 +7,15 @@ import { NavBar } from './components/NavBar';
 import { v4 as uuidv4 } from 'uuid';
 
 function App() {
-  const [todoItems, setTodoItems] = useState([
-    {
-      id: 1,
-      title: 'Setup development environment',
-      completed: true,
-    },
-    {
-      id: 2,
-      title: 'Develop website and add content',
-      completed: false,
-    },
-    {
-      id: 3,
-      title: 'Deploy to live server',
-      completed: false,
-    },
-  ]);
+  const [todoItems, setTodoItems] = useState(
+    JSON.parse(localStorage.getItem('rxt-todo')) || []
+  );
+  console.log('this is the todoItems ', todoItems);
+
+  useEffect(() => {
+    localStorage.setItem('rxt-todo', JSON.stringify(todoItems));
+    console.log('this fires just fine');
+  }, [todoItems]);
 
   const toggle = (id) => {
     setTodoItems((prevTodoItems) => {
@@ -52,11 +44,24 @@ function App() {
     });
   };
 
+  const editItem = (id, newValue) => {
+    setTodoItems((prev) => {
+      return prev.map((todo) => {
+        return todo.id === id ? { ...todo, title: newValue } : todo;
+      });
+    });
+  };
+
   return (
     <div className='App'>
       <Header />
       <InputTodo addNewTodo={addNewTodo} />
-      <TodoList items={todoItems} toggle={toggle} deleteItem={deleteItem} />
+      <TodoList
+        items={todoItems}
+        toggle={toggle}
+        deleteItem={deleteItem}
+        editItem={editItem}
+      />
     </div>
   );
 }
