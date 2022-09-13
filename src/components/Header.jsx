@@ -1,9 +1,5 @@
 import React from 'react';
 
 export const Header = () => {
-  return (
-    <div>
-      <h1>todos</h1>
-    </div>
-  );
+  return <h1 className='header-todo-title'>todos</h1>;
 };

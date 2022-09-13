@@ -27,6 +27,7 @@ export const InputTodo = (props) => {
         name='title'
         value={title}
         onChange={handleChange}
+        className='input-elem'
       />
       <button className='add-todo'>+</button>
     </form>

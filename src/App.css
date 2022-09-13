@@ -1,0 +1,45 @@
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+.header-todo-title {
+  color: #e3e3e3;
+  font-size: 101px;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  margin-inline: 20px;
+}
+.input-elem {
+  width: 80%;
+  margin-right: 9px;
+  font-size: 20px;
+  padding: 1px 12px;
+}
+
+.del-btn {
+  margin-left: 12px;
+}
+
+li {
+  list-style-type: none;
+  margin-bottom: 17px;
+}
+
+.todo-text {
+  margin-left: 12px;
+  font-size: 18px;
+}
+
+.todo-text.completed {
+  text-decoration: line-through;
+}
