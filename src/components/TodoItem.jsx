@@ -1,15 +1,15 @@
 import React from 'react';
 
 export const TodoItem = (props) => {
-  const { title, toggle } = props;
+  const { title, completed, toggle } = props;
 
   return (
     <li>
       <div>
         <input
           type='checkbox'
+          checked={completed}
           name='completed'
-          id='completed-checkbox'
           onChange={toggle}
         />
         <span className='todo-text'>{title}</span>
