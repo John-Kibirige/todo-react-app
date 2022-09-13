@@ -7,6 +7,7 @@ export const TodoList = (props) => {
     <TodoItem
       key={item.id}
       title={item.title}
+      completed={item.completed}
       toggle={() => {
         toggle(item.id);
       }}

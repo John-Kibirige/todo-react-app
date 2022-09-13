@@ -4,6 +4,7 @@ import { Header } from './components/Header';
 import { InputTodo } from './components/InputTodo';
 import { TodoList } from './components/TodoList';
 import { NavBar } from './components/NavBar';
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
   const [todoItems, setTodoItems] = useState([
@@ -33,10 +34,24 @@ function App() {
       });
     });
   };
+
+  const addNewTodo = (newTitle) => {
+    setTodoItems((prev) => {
+      return [
+        ...prev,
+        {
+          id: uuidv4(),
+          title: newTitle,
+          completed: false,
+        },
+      ];
+    });
+  };
+
   return (
     <div className='App'>
       <Header />
-      <InputTodo />
+      <InputTodo addNewTodo={addNewTodo} />
       <TodoList items={todoItems} toggle={toggle} />
     </div>
   );
