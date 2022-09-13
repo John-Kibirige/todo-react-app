@@ -11,8 +11,12 @@ export const InputTodo = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addNewTodo(title);
-    setTitle('');
+    if (title.trim()) {
+      addNewTodo(title);
+      setTitle('');
+    } else {
+      alert('Please fill the task input field ');
+    }
   };
 
   return (

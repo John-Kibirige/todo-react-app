@@ -2,7 +2,7 @@ import React from 'react';
 import { TodoItem } from './TodoItem';
 
 export const TodoList = (props) => {
-  const { items, toggle } = props;
+  const { items, toggle, deleteItem } = props;
   const todoElements = items.map((item) => (
     <TodoItem
       key={item.id}
@@ -10,6 +10,9 @@ export const TodoList = (props) => {
       completed={item.completed}
       toggle={() => {
         toggle(item.id);
+      }}
+      deleteItem={() => {
+        deleteItem(item.id);
       }}
     />
   ));

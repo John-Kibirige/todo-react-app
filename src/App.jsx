@@ -25,8 +25,6 @@ function App() {
     },
   ]);
 
-  console.log(todoItems);
-
   const toggle = (id) => {
     setTodoItems((prevTodoItems) => {
       return prevTodoItems.map((todo) => {
@@ -48,11 +46,17 @@ function App() {
     });
   };
 
+  const deleteItem = (id) => {
+    setTodoItems((prev) => {
+      return prev.filter((item) => item.id !== id);
+    });
+  };
+
   return (
     <div className='App'>
       <Header />
       <InputTodo addNewTodo={addNewTodo} />
-      <TodoList items={todoItems} toggle={toggle} />
+      <TodoList items={todoItems} toggle={toggle} deleteItem={deleteItem} />
     </div>
   );
 }

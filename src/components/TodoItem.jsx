@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const TodoItem = (props) => {
-  const { title, completed, toggle } = props;
+  const { title, completed, toggle, deleteItem } = props;
 
   return (
     <li>
@@ -13,7 +13,9 @@ export const TodoItem = (props) => {
           onChange={toggle}
         />
         <span className='todo-text'>{title}</span>
-        <button className='del-btn'>D</button>
+        <button className='del-btn' onClick={deleteItem}>
+          delete
+        </button>
       </div>
     </li>
   );
