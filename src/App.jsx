@@ -6,11 +6,10 @@ import { TodoList } from './components/TodoList';
 import { NavBar } from './components/NavBar';
 import { v4 as uuidv4 } from 'uuid';
 
-function App() {
+const App = () => {
   const [todoItems, setTodoItems] = useState(
     JSON.parse(localStorage.getItem('rxt-todo')) || []
   );
-  console.log('this is the todoItems ', todoItems);
 
   useEffect(() => {
     localStorage.setItem('rxt-todo', JSON.stringify(todoItems));
@@ -64,6 +63,6 @@ function App() {
       />
     </div>
   );
-}
+};
 
 export default App;
